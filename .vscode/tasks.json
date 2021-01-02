@@ -1,0 +1,266 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "sjasmplus",
+            "type": "shell",
+            "command": "${workspaceFolder}/sjasmplus/sjasmplus.exe",
+            "args": [
+                "--sld=${workspaceFolder}/bin/invaders.sld",
+                "--lst=${workspaceFolder}/bin/invaders.lst",
+                "--lstlab",
+                "--sym=${workspaceFolder}/bin/invaders.labels",
+                "--msg=war",
+                "--fullpath", // Show full path to file in errors
+                //"--nologo",
+                "${workspaceFolder}/src/main.asm"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            // Define a problem matcher to populate the Problems window after a build
+            "problemMatcher":{
+                "owner": "sjasmplus", // TODO: Is this correct? Can't find much information on this!
+                "fileLocation": ["absolute"], // --fullpath is passed to sjasmplus.exe
+                "pattern": {
+                        // Example sjasmplus.exe output pattern to match:
+                        // C:\GitHub\HowPrice\hello-specnext\games\invaders/src/data.asm(80): error: Duplicate label: INVALID_INVADER_INDEX
+                        "regexp": "^(.*)\\(([0-9]+)\\): (error|warning):\\s+(.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "severity": 3,
+                        "message": 4
+                }
+            }
+        },
+        {
+            // Currently sound makes CSpect Jerky. Hopefully this will be fixed at some point.
+            // See https://discordapp.com/channels/556228195767156758/752197165891321886/783606939711307788
+            "label": "CSpect (with sound)", 
+            "type": "shell",
+            "command": "${workspaceFolder}/CSpect/CSpect.exe",
+            "args": [
+                "-zxnext",
+                "-remote", // don't show internal debugger screen when stopped
+                "-w3",
+                "-r",
+                //"-60",
+                //"-vsync",
+                "-s14", // .nex files default to 14MHz
+                "-tv",
+                "-mmc=${workspaceFolder}\\bin\\" // allows CSpect to load .sav file, but not save it...
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CSpect (no sound)",
+            "type": "shell",
+            "command": "${workspaceFolder}/CSpect/CSpect.exe",
+            "args": [
+                "-zxnext",
+                "-remote", // don't show internal debugger screen when stopped
+                "-w3",
+                "-r",
+                "-60",
+                "-vsync",
+                "-sound", // Currently sound must be disabled to get a smooth frame rate
+                "-s14", // .nex files default to 14MHz
+                "-tv",
+                "-mmc=${workspaceFolder}\\bin\\" // allows CSpect to load .sav file, but not save it...
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CSpect (MMC)", 
+            "type": "shell",
+            "command": "${workspaceFolder}/CSpect/CSpect.exe",
+            "args": [
+                "-zxnext",
+                "-nextrom", // requires enNextZX.rom and enNxtmmc.rom next to CSpect.exe (see CSpect readme)
+                "-mmc=${workspaceFolder}\\sd\\tbblue.mmc", // SD image downloaded from http://www.zxspectrumnext.online/cspect/
+                "-remote", // don't show internal debugger screen when stopped
+                "-w3",
+                "-r",
+                //"-sound",
+                //"-60",
+                //"-vsync",
+                "-s14", // .nex files default to 14MHz
+                "-tv"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "ZEsarUX", 
+            "type": "shell",
+            "command": "${workspaceFolder}/ZEsarUX/zesarux.exe",
+            "options": {
+                "cwd": "${workspaceFolder}/ZEsarUX"
+            },
+            "args": [
+                "--noconfigfile", // must be first
+                "--zoom",
+                "1",
+                "--machine",
+                "TBBlue",
+                //"--denyturbotbbluerom", // search "2 fps" in https://github.com/chernandezba/zesarux/blob/master/src/FAQ
+                //"--cpuspeed",
+                //"50",           // CPU speed 14MHz?
+                "--realvideo",
+                //"--tbblue-legacy-border",
+                //"--tbblue-legacy-hicolor",
+                "--enabletimexvideo",
+                "--tbblue-fast-boot-mode",
+                "--enable-remoteprotocol",
+                //"--enable-breakpoints", // doesn't seem to be required
+                "--enable-esxdos-handler",
+                "--esxdos-root-dir",
+                "${workspaceFolder}\\bin\\",
+                "--nosplash",
+                "--nowelcomemessage",
+                "--quickexit", // Exit emulator quickly: no yes/no confirmation and no fadeout
+                "--disabletooltips",
+                "--def-f-function",
+                "F4",
+                "\"HardReset\"",
+                "--def-f-function",
+                "F10", 
+                "\"ExitEmulator\"",
+                //"--enable-divmmc", // or just --enable-divmmc-ports or --enable-divmmc-paging ?
+                // TODO: 50/60Hz mode?
+                // TODO: vsync
+                // --denyturbotbbluerom --tbblue-fast-boot-mode boots tbblue directly to a 48 rom but with all the Next features enabled (except divmmc)
+                // "--joystickemulated cursor" ?
+            ],
+            "presentation": {
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "ZEsarUX (MMC)", 
+            "type": "shell",
+            "command": "${workspaceFolder}/../../ZEsarUX/zesarux.exe",
+            "options": {
+                "cwd": "${workspaceFolder}/../../ZEsarUX"
+            },
+            "args": [
+                "--noconfigfile", // must be first
+                "--mmc-file",
+                "${workspaceFolder}\\sd\\tbblue.mmc", // SD image downloaded from http://www.zxspectrumnext.online/cspect/
+                "--enable-mmc",
+                "--enable-divmmc-ports",
+                "--machine",
+                "tbblue",
+                "--denyturbotbbluerom", // search "2 fps" in https://github.com/chernandezba/zesarux/blob/master/src/FAQ
+                "--tbblue-max-turbo-rom",
+                "1",
+                "--realvideo",
+                "--tbblue-legacy-border",
+                "--tbblue-legacy-hicolor",
+                "--zoom",
+                "1",
+                "--enabletimexvideo",
+                "--enable-remoteprotocol",
+                //"--enable-breakpoints",
+                // don't use "--enable-esxdos-handler" option together with running NextZXOS from full MMC card image - it will clash with the MMC functionality
+                //"--enable-esxdos-handler",
+                "--esxdos-root-dir",
+                "${workspaceFolder}\\bin\\",
+                "--nosplash",
+                "--nowelcomemessage",
+                "--quickexit", // Exit emulator quickly: no yes/no confirmation and no fadeout
+                //"--disabletooltips",
+                "--forcevisiblehotkeys", // Force always show hotkeys. By default it will only be shown after a timeout or wrong key pressed
+                "--disablemultitaskmenu"
+                // TODO: 50/60Hz mode?
+                // TODO: vsync
+                // TODO: CPU speed 14MHz?
+                // "--cpuspeed n" ?
+                // "--enable-remoteprotocol" ?
+                // "--enable-breakpoints" ?
+                // --denyturbotbbluerom --tbblue-fast-boot-mode boots tbblue directly to a 48 rom but with all the Next features enabled (except divmmc)
+                // "--joystickemulated cursor" ?
+            ],
+            "presentation": {
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "hdfmonkey mkdir tbblue.mmc games",
+            "type": "shell",
+            "command": "${workspaceFolder}/3rdParty/hdfmonkey.exe",
+            "args": [
+                "mkdir",
+                "${workspaceFolder}/sd/tbblue.mmc",
+                "games"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "hdfmonkey mkdir tbblue.mmc games/Next",
+            "type": "shell",
+            "command": "${workspaceFolder}/3rdParty/hdfmonkey.exe",
+            "args": [
+                "mkdir",
+                "${workspaceFolder}/sd/tbblue.mmc",
+                "games/Next"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "hdfmonkey mkdir tbblue.mmc GAMES/Next/SpecNextInvaders",
+            "type": "shell",
+            "command": "${workspaceFolder}/3rdParty/hdfmonkey.exe",
+            "args": [
+                "mkdir",
+                "${workspaceFolder}/sd/tbblue.mmc",
+                "games/Next/SpecNextInvaders"
+            ],
+            "problemMatcher": []
+        },
+        {
+            // n.b. The target directory has to exist for this command to work
+            // CSpect allows the mmc card image to be altered while it is running, so can execute this task
+            // while the game is running then press F3 to reset CSpect and use the new file
+            "label": "hdfmonkey put tbblue.mmc invaders.nex",
+            "type": "shell",
+            "command": "${workspaceFolder}/3rdParty/hdfmonkey.exe",
+            "args": [
+                "put",
+                "${workspaceFolder}/sd/tbblue.mmc",
+                "${workspaceFolder}\\bin\\invaders.nex",
+                "games/Next/SpecNextInvaders/invaders.nex"
+            ],
+            // TODO: Fix dependencies. Currently stops if folder(s) already exist
+            //"dependsOrder": "sequence",
+            //"dependsOn":["hdfmonkey mkdir tbblue.mmc games", "hdfmonkey mkdir tbblue.mmc games/invaders"],
+            "problemMatcher": []
+        },
+        {
+            // TEMP task to copy manually generated sav file to MMC
+            "label": "hdfmonkey put tbblue.mmc invaders.sav",
+            "type": "shell",
+            "command": "${workspaceFolder}/3rdParty/hdfmonkey.exe",
+            "args": [
+                "put",
+                "${workspaceFolder}/sd/tbblue.mmc",
+                "${workspaceFolder}\\bin\\invaders.sav",
+                "games/Next/SpecNextInvaders/invaders.sav"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
