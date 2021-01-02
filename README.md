@@ -28,14 +28,10 @@ Open project folder with  File > Open Folder...
 
 ### Building
 
-- Create .vscode/tasks.json in .vscode folder
 - Main Menu > Terminal > Run Build Task... (Ctrl+Shift+B)
-
-n.b. If modify tasks.json, have to close the terminal before building again it seems.
 
 ### Debugging
 
-- Create .vscode/launch.json (or click Configure in the Run Side Bar)
 - Launch CSpect with the -remote command line arg
   - Ctrl+P then type 'task CSpect'
 - Ctrl+Shift+D to open Debugging Side Bar
