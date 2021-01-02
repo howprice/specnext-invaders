@@ -1,7 +1,7 @@
 # SpecNext Invaders
-Simple ZX Spectrum Next arcade game for educational purposes.
+Simple [ZX Spectrum Next](https://www.specnext.com/) arcade game for educational purposes.
 
-Programmed in Z80N assembly language. Assembled with [sjasmplus](https://github.com/z00m128/sjasmplus). Developed in [Visual Studio Code](https://code.visualstudio.com/) with the [DeZog](https://github.com/maziac/DeZog) plugin. Tested with the [#CSpect](http://www.cspect.org) emulator.
+Programmed in [Z80N](https://wiki.specnext.dev/Extended_Z80_instruction_set) assembly language. Assembled with [sjasmplus](https://github.com/z00m128/sjasmplus). Developed in [Visual Studio Code](https://code.visualstudio.com/) with the [DeZog](https://github.com/maziac/DeZog) plugin. Tested with the [#CSpect](http://www.cspect.org) emulator.
 
 Thanks to [SpecBong](https://github.com/ped7g/SpecBong) and [Lucky Red Fish](https://luckyredfish.com/patricias-spectrum-next-links/) for getting started.
 
