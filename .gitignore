@@ -1,0 +1,8 @@
+cspect_win.dat
+cspect.log
+*.nex
+*.lst
+*.labels
+*.map
+*.sld
+.tmp

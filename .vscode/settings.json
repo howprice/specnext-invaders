@@ -1,0 +1,8 @@
+{
+    "files.exclude": {
+        "cspect_win.dat": true,
+        "CSpect": true,
+        "sd": true,
+        "sjasmplus": true
+    }
+}

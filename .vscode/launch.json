@@ -1,0 +1,83 @@
+{
+    // Use IntelliSense (Ctrl+Space or hover) to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "configurations": [
+        {
+            "type": "dezog",
+            "request": "launch",
+            "name": "CSpect",
+            "remoteType": "cspect",
+            "cspect": {
+                "hostname": "localhost",
+                "port": 11000
+            },
+            // for real, physical ZX Spectrum next hardware
+            "zxnext": {
+                "baudrate": 230400,
+                "port": "/dev/tty.usbserial"
+            },
+            "rootFolder": "${workspaceFolder}",
+            "sjasmplus": [{
+                "path": "bin/invaders.sld" // relative to root folder
+            }],
+            "disassemblerArgs": {
+                "esxdosRst": true
+            },
+            "load": "bin/invaders.nex",
+            "startAutomatically": true,
+//          "preLaunchTask": "sjasmplus" // enable to build before launch
+//          "preLaunchTask": "CSpect" // enable to launch CSpect.exe before launch. Seems a bit buggy.
+//          "resetOnLaunch": true // doesn't seem to work
+            "commandsAfterLaunch": [
+
+                // Enables DeZog asserts https://github.com/maziac/DeZog/blob/master/documentation/Usage.md#assert
+                // DeZog asserts seems to slow down execution A LOT. Too much to be useful in per-frame functions really :-(
+                //"-ASSERT enable" 
+
+                //"-LOGPOINT enable"
+                //"-sprites",
+                //"-patterns"
+            ]
+        },
+        {
+            "type": "dezog",
+            "request": "launch",
+            "name": "ZXsarUX",
+            "remoteType": "zrcp", // zrcp == ZXsarUX
+            "zrcp" : { // ZEsarUX
+                "hostname": "localhost",
+                "port": 10000,
+                //"skipInterrupt": true, // If true (default is false) ZEsarUX does not break in interrupts (on manual break).
+                "loadDelay": 1000 // avoid ZEsarUX rainbow/kernel panic on Windows (default 100)  
+            },
+            // for real, physical ZX Spectrum next hardware
+            "zxnext": {
+                "baudrate": 230400,
+                "port": "/dev/tty.usbserial"
+            },
+            "rootFolder": "${workspaceFolder}",
+            "sjasmplus": [{
+                "path": "bin/invaders.sld" // relative to root folder
+            }],
+            "disassemblerArgs": {
+                "esxdosRst": true
+            },
+            "load": "bin/invaders.nex",
+            "startAutomatically": true,
+//          "preLaunchTask": "sjasmplus" // enable to build before launch
+//          "preLaunchTask": "CSpect" // enable to launch CSpect.exe before launch. Seems a bit buggy.
+//          "resetOnLaunch": true // doesn't seem to work
+            "commandsAfterLaunch": [
+
+                // Enables DeZog asserts https://github.com/maziac/DeZog/blob/master/documentation/Usage.md#assert
+                // DeZog asserts seems to slow down execution A LOT. Too much to be useful in per-frame functions really :-(
+                //"-ASSERT enable" 
+
+                //"-LOGPOINT enable"
+                //"-sprites",
+                //"-patterns"
+            ]
+        }
+    ]
+}
