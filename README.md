@@ -7,6 +7,8 @@ Thanks to [SpecBong](https://github.com/ped7g/SpecBong) and [Lucky Red Fish](htt
 
 AY audio from [AYFX Editor and player](https://shiru.untergrund.net/software.shtml#old)
 
+A binary of the game is available at https://howprice.itch.io/specnext-invaders
+
 ## Recommended reading
 - http://z80-heaven.wikidot.com/advanced-math
 - "Z80 Assembly Language Subroutines" by Lance A. Leventhal and Winthrop Saville. The first few chapters are excellent for programmers who are familiar with high-level languages (C, C++, Python etc). It explains how to do everyday things such as loops, working with arrays and structures. Very succinctly written and a welcome change from 'beginners' books.
