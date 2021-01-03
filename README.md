@@ -63,9 +63,8 @@ Thanks to Shiru for the [AYFX Editor and player](https://shiru.untergrund.net/so
 ## Z80 Coding Style and Conventions
 
 - Whitespace
-  - Labels right aligned
   - Spaces, not tabs
-  - Instructions indented 2x4 space tabs = 8 characters
+  - Instructions indented 8 spaces
   - No space between oprands e.g. ld a,b
 - Naming conventions
   - Upper case assembler directives e.g. EQU, ORG, IF, ENDIF
