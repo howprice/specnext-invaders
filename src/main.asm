@@ -47,6 +47,7 @@ CODE_START
         INCLUDE "music.asm"
         INCLUDE "ayfxplay.asm"
         INCLUDE "sound_effects.asm"
+        INCLUDE "audio.asm"
         INCLUDE "file.asm"
 
 Start:
@@ -61,15 +62,8 @@ Start:
         call InitInput
         call LoadHighScoreFile
         
-        ; set mono mode to avoid sound effects and music being randomly ABC panned
-        ; This doesn't currently work on CSpect
-        nextreg NEXTREG_PERIPHERAL_4,%111'00000 ; bits 7:5 enable mono mode for AY chips 2:0
-
         ; initialise audio before enabling interrupt to ensure TickAudio not called before InitAudio is complete
-        call InitMusic
-
-        ld hl,pAyfxSoundEffectsBank
-        call AyfxInit
+        call InitAudio
 
         call InitInterrupt
 
