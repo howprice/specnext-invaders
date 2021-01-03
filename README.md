@@ -14,8 +14,23 @@ A binary of the game is available at https://howprice.itch.io/specnext-invaders
 - "Z80 Assembly Language Subroutines" by Lance A. Leventhal and Winthrop Saville. The first few chapters are excellent for programmers who are familiar with high-level languages (C, C++, Python etc). It explains how to do everyday things such as loops, working with arrays and structures. Very succinctly written and a welcome change from 'beginners' books.
 - https://wikiti.brandonw.net/index.php?title=Z80_Optimization is a collection of lots of good standard programming patterns (retrieved 17 Nov 2020)
 
-## Development Environment
+## Building
 
+Build from project root with with command line:
+
+```
+sjasmplus --fullpath --sld=bin/invaders.sld --lst=bin/invaders.lst --lstlab --sym=bin/invaders.labels --msg=war src/main.asm
+```
+
+[build.bat](./build.bat) is included for the convenience of Windows users.
+
+Build from Visual Studio code Main Menu > Terminal > Run Build Task... (Ctrl+Shift+B)
+
+## Running
+
+Copy the bin/invaders.nex to the SD card used with your ZX Spectrum Next or open with an emulator.
+
+## Development Environment
 
 Based on information from:
 - https://luckyredfish.com/coding-for-the-spectrum-next-emulator-cspect/
@@ -28,9 +43,6 @@ Install extensions:
 
 Open project folder with  File > Open Folder...
 
-### Building
-
-- Main Menu > Terminal > Run Build Task... (Ctrl+Shift+B)
 
 ### Debugging
 
