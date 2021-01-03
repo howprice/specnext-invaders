@@ -185,7 +185,7 @@ STACK_SIZE_BYTES EQU $0800
 
         ASSERT CODE_END < STACK_BOTTOM ; Code has crashed the stack. Relocate stack
 
-        ORG $B800
+        ORG STACK_BOTTOM
         DS  STACK_SIZE_BYTES-2, $00
 initialStackTop:
         DW  $0000
