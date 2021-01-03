@@ -49,10 +49,20 @@ NEXTREG_CPU_SPEED_FLAGS_14MHZ  EQU %10
 NEXTREG_CPU_SPEED_FLAGS_28MHZ  EQU %11
 
 NEXTREG_PERIPHERAL_4 EQU $09  ; https://wiki.specnext.dev/Peripheral_4_Register
+; 0x09 (09) => Peripheral 4 Setting
+; (R/W)
 ; bit 7 = Place AY 2 in mono mode (hard reset = 0)
 ; bit 6 = Place AY 1 in mono mode (hard reset = 0)
 ; bit 5 = Place AY 0 in mono mode (hard reset = 0)
-; (all other bits default to 0)
+; bit 4 = Sprite id lockstep (nextreg 0x34 and port 0x303B are in lockstep) (soft reset = 0)
+; bit 3 = Reset divmmc mapram bit (port 0xe3 bit 6) (read returns 0)
+; bit 2 = 1 to silence hdmi audio (hard reset = 0)
+; bits 1:0 = Scanline weight
+;   00 = scanlines off
+;   01 = scanlines 50%
+;   10 = scanlines 25%
+;   11 = scanlines 12.5%
+;
 ; In "mono" mode A+B+C is sent to both R and L channels, makes it a bit louder than stereo mode.
 ; n.b. This doesn't currently work on CSpect
 

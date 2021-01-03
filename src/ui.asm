@@ -25,7 +25,7 @@ GAME_OVER_PLAYER_TEXT_LENGTH EQU $-gameOverPlayer2Text-1
 GAME_OVER_PLAYER_TEXT_X EQU 6
 GAME_OVER_PLAYER_TEXT_Y EQU 22
 
-versionString:          BYTE "V0.8.1", 0                          ; null terminated string
+versionString:          BYTE "V0.8.2", 0                          ; null terminated string
 VERSION_STRING_LENGTH   EQU $-versionString-1                     ; -1 to account for null terminator
 
 flashActivePlayerText DB $00
