@@ -1,20 +1,11 @@
 # SpecNext Invaders
 Simple [ZX Spectrum Next](https://www.specnext.com/) arcade game for educational purposes.
 
-Programmed in [Z80N](https://wiki.specnext.dev/Extended_Z80_instruction_set) assembly language. Assembled with [sjasmplus](https://github.com/z00m128/sjasmplus). Developed in [Visual Studio Code](https://code.visualstudio.com/) with the [DeZog](https://github.com/maziac/DeZog) plugin. Tested with the [#CSpect](http://www.cspect.org) emulator.
-
-Thanks to [SpecBong](https://github.com/ped7g/SpecBong) and [Lucky Red Fish](https://luckyredfish.com/patricias-spectrum-next-links/) for getting started.
-
-AY audio from [AYFX Editor and player](https://shiru.untergrund.net/software.shtml#old)
-
 A binary of the game is available at https://howprice.itch.io/specnext-invaders
 
-## Recommended reading
-- http://z80-heaven.wikidot.com/advanced-math
-- "Z80 Assembly Language Subroutines" by Lance A. Leventhal and Winthrop Saville. The first few chapters are excellent for programmers who are familiar with high-level languages (C, C++, Python etc). It explains how to do everyday things such as loops, working with arrays and structures. Very succinctly written and a welcome change from 'beginners' books.
-- https://wikiti.brandonw.net/index.php?title=Z80_Optimization is a collection of lots of good standard programming patterns (retrieved 17 Nov 2020)
-
 ## Building
+
+The [Z80N](https://wiki.specnext.dev/Extended_Z80_instruction_set) assembly language source code is written to be assembled with the [SjASMPlus Z80 Cross-Assembler](https://github.com/z00m128/sjasmplus) (tested with v1.18.0).
 
 Build from project root with with command line:
 
@@ -28,23 +19,24 @@ Build from Visual Studio code Main Menu > Terminal > Run Build Task... (Ctrl+Shi
 
 ## Running
 
-Copy the bin/invaders.nex to the SD card used with your ZX Spectrum Next or open with an emulator.
+Copy the bin/invaders.nex to the SD card used with your ZX Spectrum Next or open with an emulator such as [#CSpect](http://www.cspect.org) (tested with version V2.13.00).
 
 ## Development Environment
 
-Based on information from:
-- https://luckyredfish.com/coding-for-the-spectrum-next-emulator-cspect/
-- http://www.breakintoprogram.co.uk/computers/zx-spectrum/assembly-language/z80-development-toolchain
-
-Install extensions:
+Developed in [Visual Studio Code](https://code.visualstudio.com/) with extensions:
 - [ASM Code Lens maziac.asm-code-lens](https://github.com/maziac/asm-code-lens) language server extension for Visual Studio Code for assembler files
 - [DeZog maziac.dezog](https://github.com/maziac/DeZog) Visual Studio Code Debugger for Z80/ZX Spectrum.
 - [Z80 Instruction Set maziac.z80-instruction-set](https://github.com/maziac/z80-instruction-set) Shows the Z80 opcode when hovering over an instruction.
 
 Open project folder with  File > Open Folder...
 
+With thanks for information from:
+- https://luckyredfish.com/coding-for-the-spectrum-next-emulator-cspect/
+- http://www.breakintoprogram.co.uk/computers/zx-spectrum/assembly-language/z80-development-toolchain
 
 ### Debugging
+
+Debug in Visual Studio Code the [DeZog](https://github.com/maziac/DeZog) plugin. [launch.json](./.vscode/launch.json) is configured for DeZog version 2.0.3.
 
 - Launch CSpect with the -remote command line arg
   - Ctrl+P then type 'task CSpect'
@@ -56,6 +48,17 @@ See https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
 
 Tips:
 - Some DeZog features are only available through the Debug Console command line e.g. -sprites and -md (dump memory)
+
+## Thanks and attribution
+
+[SpecBong](https://github.com/ped7g/SpecBong) and [Lucky Red Fish](https://luckyredfish.com/patricias-spectrum-next-links/) were extremely helpful getting started with ZX Spectrum Next development.
+
+Thanks to Shiru for the [AYFX Editor and player](https://shiru.untergrund.net/software.shtml#old). Modified to support looping samples.
+
+## Recommended reading
+- http://z80-heaven.wikidot.com/advanced-math
+- "Z80 Assembly Language Subroutines" by Lance A. Leventhal and Winthrop Saville. The first few chapters are excellent for programmers who are familiar with high-level languages (C, C++, Python etc). It explains how to do everyday things such as loops, working with arrays and structures. Very succinctly written and a welcome change from 'beginners' books.
+- https://wikiti.brandonw.net/index.php?title=Z80_Optimization is a collection of lots of good standard programming patterns (retrieved 17 Nov 2020)
 
 ## Z80 Coding Style and Conventions
 
