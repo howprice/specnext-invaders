@@ -1,72 +1,5 @@
-; -------------------------------------------------------------------------------------------
-; Space Invaders clone for ZX Spectrum Next
-; -------------------------------------------------------------------------------------------
-;
-; TODO
-; - Tidy up source code
-;   - First pass over source where it is
-;     - List sources of any copied code for attribution
-;   - Copy invaders src into adjacent folder specnext-invaders and remove all original graphics etc
-;   - Copy hello-specnext/games/specnext-invaders into new specnext-invaders repo
-; - Include sjasmplus and CSpect binaries in SpecNextInvaders repo? 
-;   - Look at Specbong repo layout and contents. 
-; - Host NEX binary release on GitHub? (See Specbong) 
-; - Build both DEBUG and Release (normal) nex files. Define -DDEBUG on sjasmplus command line to turn off perf bars etc. 
-; - Release the game
-;   - Put source code on GitHub
-;   - Go through the list of software on the wiki and see what looks best
-; - Make the game more playable (fun)
-;   - Improve invader bullet firing logic and timing (see Computer Archeology site)
-;   - Collide ship bullet with invader bullets
-; - BUG? If launch from vscode with MMC image file then system font is corrupt
-; - Custom font?
-; - Display build or version number on title screen
-;   - Possible to automate this? e.g. Inject date/time string into assembly?
-; - Attract mode
-; - Make UFO slide into playfield (instant appear/disappear can be jarring)
-;   - Two opqaue black sprites at either side of UFO movement range?
-; - Fix up horizontal ship/invader movement range and shield positions wrt arcade machine. Think playfield is too broad.
-; - Use small character icons instead of numbers to represent lives
-; - Layer 2 background (planet image, like in arcade cab reflection)
-;   - Layer 2 sample first
-; - Blog/forum/Facebook Post about experience
-; - Pixel perfect bullet vs invader collision detection?
-; -------------------------------------------------------------------------------------------
-; POLISH:
-; Improve sound effects
-; - Special sound effect when destroy 1500 point UFO
-; - What happens in AYFX if two effects are played simultaneously and both use the (shared) Noise Period?
-; - Author more authentic Ship Firing sound effects in ayfxedit.exe
-; - Author more authentic Invader Destroyed sound effects in ayfxedit.exe
-; - Author more authentic Ship Destroyed sound effects in ayfxedit.exe (ref invaders_samples/2.wav)
-;
-; - Music
-;   - First note is loud and seems to come out of both left and right speakers. 
-;     - Emulator bug or poorly initialised AY3 registers?
-;   - Try tweaking AY3_NOISE_PERIOD for music channel
-;   - Music pattern should maybe be rearranged to have highest note last in sequence!
-; -------------------------------------------------------------------------------------------
-; OPTIMISATIONS:
-; - Read https://wikiti.brandonw.net/index.php?title=Z80_Optimization
-;   - Replace all JR with JP for speed when branch taken (but 1 byte larger) https://wikiti.brandonw.net/index.php?title=Z80_Optimization#For_the_sake_of_size
-; - Read http://z80-heaven.wikidot.com/optimization
-; - Only upload dirty sprites in UploadSpriteAttributes. But may actually be better to always upload all for worst-case performance.
-; - Read optimisation sections of "Z80 Assembly Language Subroutines"
-; - Can index + offset instructions be replaced with faster HL instructions?
-; - Bounding box around each row of invaders to accelerate collision detection. 
-;   - Only perform collision detection with individual invaders if bullet overlaps row bounding box
-;   - Update each time invader in that row moves
-;   - Early out in y direction first because rows are long flat rectangles
-;
-;-------------------------------------------------------------------------------
-; Notes
-; - In sjasmplus, the name (label) in a struct definition is set to the total size of the structure (see sjasmplus docs)    
-; - DeZog ASSERTS are very slow when CSpect is used due to the interface. Explaination is in the DeZog manual
-; - Evaluate DeZog LOGPOINTS https://github.com/maziac/DeZog/blob/master/documentation/Usage.md#logpoint (probably also too slow)
-; - There are no Random Number Generators is Space Invaders. Everything that looks random such as invader bullets and UFO direction 
-;   and score value follows a predictable sequence or logic.
-;
-;-------------------------------------------------------------------------------    
+; Build from project root with with command line:
+; sjasmplus --fullpath --sld=bin/invaders.sld --lst=bin/invaders.lst --lstlab --sym=bin/invaders.labels --msg=war src/main.asm
 
         OPT --syntax=abfw  ; sjasmplus recommended settings
         OPT --zxnext
@@ -74,8 +7,6 @@
  
         DEVICE ZXSPECTRUMNEXT
         SLDOPT COMMENT WPMEM, LOGPOINT, ASSERTION
-
-; ------------------------------------------------------------------------------------------------
 
         DEFINE DISPLAY_PERFORMANCE_DEBUG_BORDER 1    ; enable the color stripes in border
 
@@ -85,8 +16,6 @@
         ; which can reduce latency to zero if whole game runs before raster gets back to first
         ; line containing sprites.
         DEFINE UPLOAD_SPRITE_ATTRIBUTES_FIRST 0   
-
-; ------------------------------------------------------------------------------------------------
 
         ORG $8000               ; $8000..BFFF is Bank 2 (pages 4 and 5)
 
