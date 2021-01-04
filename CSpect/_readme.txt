@@ -6,7 +6,7 @@ Note: Your virus checker may tell you that http://www.cspect.org contains harmfu
     This is so that SD cards can still be written to while the emulator is running. You'll need to add an exception if you wish to use it.
     https://dailly.blogspot.com/2020/11/cspect-v21300.html
 
-If you do not wish to unzip the entire contents of CSpect then the minimal set of required files at of V2.13.00 are:
+If you do not wish to unzip the entire contents of CSpect then the minimal set of required files as of V2.13.00 are:
 
 ay8912.dll
 CSpect.exe
@@ -19,6 +19,6 @@ OpenTK.dll.config
 Plugin.dll
 ReadMe.txt
 
-Then download the DeZogPlugin.dll from https://github.com/maziac/DeZogPlugin (https://github.com/maziac/DeZogPlugin/releases) and place it here too
+If you wish to debug using the DeZog Visual Studio Code plugin then download the DeZogPlugin.dll from https://github.com/maziac/DeZogPlugin (https://github.com/maziac/DeZogPlugin/releases) and place it here too
 
 Ensure you download a version of the DeZogPlugin that is compatible with the version of CSpect you are using.

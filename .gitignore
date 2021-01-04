@@ -6,3 +6,7 @@ cspect.log
 *.map
 *.sld
 .tmp
+CSpect/*
+!CSpect/_readme.txt
+ZEsarUX/*
+!ZEsarUX/_readme.txt
