@@ -43,8 +43,8 @@
         {
             "type": "dezog",
             "request": "launch",
-            "name": "ZXsarUX",
-            "remoteType": "zrcp", // zrcp == ZXsarUX
+            "name": "ZEsarUX",
+            "remoteType": "zrcp", // zrcp == ZEsarUX
             "zrcp" : { // ZEsarUX
                 "hostname": "localhost",
                 "port": 10000,
