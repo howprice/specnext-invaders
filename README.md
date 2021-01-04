@@ -36,7 +36,9 @@ With thanks for information from:
 
 ### Debugging
 
-Debug in Visual Studio Code the [DeZog](https://github.com/maziac/DeZog) plugin. [launch.json](./.vscode/launch.json) is configured for DeZog version 2.0.3.
+Debug in Visual Studio Code with [DeZog](https://github.com/maziac/DeZog). Ensuring that the [DeZog Plugin](https://github.com/maziac/DeZogPlugin) DLL is next to the CSpect.exe (see [./CSpect/_readme.txt](./CSpect/_readme.txt)). 
+
+[launch.json](./.vscode/launch.json) is currently configured for DeZog version 2.0.3.
 
 - Launch CSpect with the -remote command line arg
   - Ctrl+P then type 'task CSpect'
