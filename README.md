@@ -1,11 +1,25 @@
 # SpecNext Invaders
-Simple [ZX Spectrum Next](https://www.specnext.com/) arcade game for educational purposes.
+Simple [ZX Spectrum Next](https://www.specnext.com/) arcade game in Z80N assembly language for educational purposes.
 
 A binary of the game is available at https://howprice.itch.io/specnext-invaders
 
+Features:
+- Classic arcade action
+- Keyboard and joystick input
+- Hardware sprites
+- ULA text and destructible shield graphics
+- Mode 2 Line Interrupt handler
+- Hitbox collision detection
+- High-level game state machine
+- AY-3 sound effects and 'music'
+- 2 player logic
+- High score file saving/loading using esxDOS
+- Visual Studio Code project files to build, launch in emulators and copy to SD image file
+- Well commented code
+
 ## Building
 
-The [Z80N](https://wiki.specnext.dev/Extended_Z80_instruction_set) assembly language source code is written to be assembled with the [SjASMPlus Z80 Cross-Assembler](https://github.com/z00m128/sjasmplus) (tested with v1.18.0).
+The [Z80N](https://wiki.specnext.dev/Extended_Z80_instruction_set) assembly language source code uses syntax compatible with the [SjASMPlus Z80 Cross-Assembler](https://github.com/z00m128/sjasmplus) (tested with v1.18.0).
 
 Build from project root with with command line:
 
@@ -57,6 +71,8 @@ Tips:
 ## Thanks and attribution
 
 [SpecBong](https://github.com/ped7g/SpecBong) and [Lucky Red Fish](https://luckyredfish.com/patricias-spectrum-next-links/) were extremely helpful getting started with ZX Spectrum Next development.
+
+[hdfmonkey](https://github.com/gasman/hdfmonkey)
 
 Thanks to Shiru for the [AYFX Editor and player](https://shiru.untergrund.net/software.shtml#old). Modified to support looping samples.
 
