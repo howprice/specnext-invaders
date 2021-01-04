@@ -127,6 +127,8 @@
                 "--enable-esxdos-handler",
                 "--esxdos-root-dir",
                 "${workspaceFolder}\\bin\\",
+                //"--ao",  // disable audio (doesn't improve frame rate)
+                //"null",  //
                 "--nosplash",
                 "--nowelcomemessage",
                 "--quickexit", // Exit emulator quickly: no yes/no confirmation and no fadeout
