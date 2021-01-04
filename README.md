@@ -41,7 +41,10 @@ Debug in Visual Studio Code with [DeZog](https://github.com/maziac/DeZog). Ensur
 [launch.json](./.vscode/launch.json) is currently configured for DeZog version 2.0.3.
 
 - Launch CSpect with the -remote command line arg
-  - Ctrl+P then type 'task CSpect'
+  - Ctrl+P then type `task CSpect`
+  - Select `CSpect (no sound)` to run at a nice smooth 60Hz frame rate, but with no sound
+  - Select `CSpect (sound)` to run with sound, but compromising frame rate (this is an OpenAL issue which is on the CSpect roadmap)
+  - Select `CSpect (MMC)` to run with an SD image card. See [./sd/readme.txt](./sd/readme.txt) for more information
 - Ctrl+Shift+D to open Debugging Side Bar
 - Run > Start Debugging (F5)
 - If CSpect fails to start check cspect.log
