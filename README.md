@@ -59,7 +59,9 @@ Debug in Visual Studio Code with [DeZog](https://github.com/maziac/DeZog). Ensur
   - Select `CSpect (no sound)` to run at a nice smooth 60Hz frame rate, but with no sound
   - Select `CSpect (sound)` to run with sound, but compromising frame rate (this is an OpenAL issue which is on the CSpect roadmap)
   - Select `CSpect (MMC)` to run with an SD image card. See [./sd/readme.txt](./sd/readme.txt) for more information
+- Or launch ZEsarUX similarly
 - Ctrl+Shift+D to open Debugging Side Bar
+- Select CSpect or ZEsarUX from the combo box at the top
 - Run > Start Debugging (F5)
 - If CSpect fails to start check cspect.log
 
